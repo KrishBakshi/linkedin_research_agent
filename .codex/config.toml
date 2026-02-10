@@ -1,0 +1,12 @@
+[mcp_servers.comet-mcp]
+command = "npx"
+args = ["-y", "comet-mcp"]
+
+[mcp_servers.linkedin-mcp-server]
+command = "uvx"
+args = ["--from",
+        "git+https://github.com/stickerdaniel/linkedin-mcp-server",
+        "linkedin-mcp-server"]
+
+[mcp_servers.notion]
+url = "https://mcp.notion.com/mcp"

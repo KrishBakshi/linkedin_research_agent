@@ -1,0 +1,4 @@
+# Ignore all JSON result files
+runs/*.json
+
+*.DS_Store
