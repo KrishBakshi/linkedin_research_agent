@@ -66,12 +66,12 @@ This skill provides browser navigation instructions to execute LinkedIn people s
      "https://www.linkedin.com/in/user3/"
      ```
 
-4. **Profile scraping**: Once URLs are collected, use MCP tools for profile scraping
-   - Search for available MCP tools like `linkedin-mcp` or similar profile scraping tools
-   - Use these MCP tools to scrape the entire profile data from the collected URLs
+4. **Profile extraction**: Once URLs are collected, use the dedicated extraction skill
+   - Use the `linkedin-profile-extract-chrome-devtools` skill for each collected profile URL
+   - Use the Chrome DevTools MCP server (`mcp__chrome-devtools__*`) for extraction
+   - Extract only the required structured fields defined by that skill
    - **NEVER USE THE COMET BROWSER FOR PROFILE SCRAPING OR OPENING PROFILES**
    - The Comet browser is extremely slow and should only be used to collect URLs
-   - Dedicated MCP profile scraping tools are much faster and more efficient for bulk scraping
 
 ### Step 5: Navigate Through Result Pages
 
@@ -107,9 +107,9 @@ This skill provides browser navigation instructions to execute LinkedIn people s
 3. Navigate through result pages and collect profile URLs using Comet browser
    - **THE COMET BROWSER SHOULD NEVER CLICK OR OPEN ANY PROFILES**
    - Its sole purpose is to return profile URLs
-4. **Profile scraping**: Use dedicated MCP tools (like `linkedin-mcp`) to scrape profile data from collected URLs
+4. **Profile extraction**: Use `linkedin-profile-extract-chrome-devtools` with `mcp__chrome-devtools__*` on each collected URL
    - **NEVER use the Comet browser for profile scraping or opening profiles** - it's extremely slow
-   - Dedicated profile scraping MCP tools provide fast, efficient bulk scraping
+   - Keep Comet for URL collection only; use Chrome DevTools MCP for profile extraction
 
 ## Example Queries for Reference
 
@@ -117,27 +117,27 @@ These example queries can be used when executing the search steps above:
 
 ### Finding AI/ML Founders in Japan
 ```
-("founder" OR "co-founder") AND ("ai" OR "ml" OR "data science") AND "japan"
+"founder" OR "co-founder" AND "ai" OR "ml" OR "data science" AND "japan"
 ```
 
 ### Finding Senior Engineers with Cloud Experience
 ```
-("senior software engineer" OR "staff engineer") AND (aws OR azure OR gcp) AND "python"
+"senior software engineer" OR "staff engineer" AND aws OR azure OR gcp AND "python"
 ```
 
 ### Finding Product Managers in Startups
 ```
-("product manager" OR "product owner") AND (startup OR "early stage") AND "remote"
+"product manager" OR "product owner" AND startup OR "early stage" AND "remote"
 ```
 
 ### Finding Data Scientists
 ```
-("data analyst" OR "data scientist") AND sql AND python AND (tableau OR "power bi")
+"data analyst" OR "data scientist" AND sql AND python AND tableau OR "power bi"
 ```
 
 ### Finding Marketing Professionals
 ```
-("marketing manager" OR "growth manager") AND (b2b OR saas) AND salesforce
+"marketing manager" OR "growth manager" AND b2b OR saas AND salesforce
 ```
 
 **Note**: These are examples only. Generate your actual queries using the `linkedin-boolean-search` skill for best results.

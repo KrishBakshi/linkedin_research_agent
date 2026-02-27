@@ -1,26 +1,23 @@
 ---
 name: linkedin-boolean-search
-description: Constructs advanced LinkedIn Boolean search queries using AND, OR, NOT operators, quotation marks, parentheses, and LinkedIn-specific filters. Use when the user wants to search LinkedIn, find candidates, create recruiter searches, build talent sourcing queries, or needs help with LinkedIn search operators.
+description: Constructs advanced LinkedIn Boolean search queries using AND, OR operators, and quotation marks with LinkedIn-specific filters. Use when the user wants to search LinkedIn, find candidates, create recruiter searches, build talent sourcing queries, or needs help with LinkedIn search operators.
 ---
 
 # LinkedIn Boolean Search Query Builder
 
 ## Core Boolean Operators
 
-LinkedIn supports three primary Boolean operators:
+LinkedIn supports these primary Boolean operators:
 
 - **AND**: All terms must be present (implied by default, can be explicit)
 - **OR**: At least one term must be present
-- **NOT**: Excludes terms from results
 - **Quotation marks `""`**: Exact phrase matching
-- **Parentheses `()`**: Groups terms to control logic order
 
 ## Basic Syntax Rules
 
 1. **Case insensitive**: Operators work in any case, but UPPERCASE is recommended for clarity
 2. **Implicit AND**: Space between terms defaults to AND
-3. **Grouping**: Use parentheses to control operator precedence
-4. **Quotes**: Use for exact job titles, company names, or multi-word phrases and location
+3. **Quotes**: Use for exact job titles, company names, or multi-word phrases and location
 
 ## Filter rules
 1. Apply filters for locations, company, and connection type only
@@ -30,7 +27,7 @@ LinkedIn supports three primary Boolean operators:
 ## Search Pattern Examples
 
 ```
-(developer OR engineer) AND (python OR java)
+developer OR engineer AND python OR java
 ```
 Multiple role variations with required skills.
 
@@ -40,9 +37,9 @@ Multiple role variations with required skills.
 Exact phrase with location keyword within quotes.
 
 ```
-(react OR angular) AND typescript NOT junior
+react OR angular AND typescript
 ```
-Skills combination excluding unwanted terms.
+Skills combination with alternatives.
 
 ## LinkedIn-Specific Search Filters
 
@@ -67,77 +64,62 @@ While Boolean operators work in the main search, combine them with LinkedIn's bu
 ## Advanced Query Examples
 
 ```
-("software engineer" OR "senior developer") AND (aws OR azure) AND python NOT manager
+"software engineer" OR "senior developer" AND aws OR azure AND python
 ```
-Complex criteria: senior ICs with cloud and Python skills.
+Complex criteria: senior roles with cloud and Python skills.
 
 ```
-("ai engineer" OR "ml engineer") AND pytorch NOT founder NOT ceo
+"ai engineer" OR "ml engineer" AND pytorch
 ```
-IC roles only: excludes executives who have AI skills but aren't hands-on engineers.
+AI/ML roles with specific framework experience.
 
 ## Critical Rules
 
-1. **Max 2-4 OR terms per group** - LinkedIn has complexity limits
-   - Bad: `("ai" OR "ml" OR "data science" OR "analytics")` 
-   - Good: `("ai" OR "data science")`
+1. **Max 2-4 OR terms per query** - LinkedIn has complexity limits
+   - Bad: `"ai" OR "ml" OR "data science" OR "analytics"` 
+   - Good: `"ai" OR "data science"`
 
 2. **Never use short AND long forms of same term**
-   - Bad: `("ml" OR "machine learning")` or `("ai" OR "artificial intelligence")`
-   - Good: `("ai" OR "ml")` - different concepts, both short
+   - Bad: `"ml" OR "machine learning"` or `"ai" OR "artificial intelligence"`
+   - Good: `"ai" OR "ml"` - different concepts, both short
    - Always use short forms: "ai", "ml" not "artificial intelligence", "machine learning"
 
-3. **Use parentheses for grouping**
-   - Bad: `developer OR engineer AND python OR java`
-   - Good: `(developer OR engineer) AND (python OR java)`
-
-4. **Use quotes for multi-word phrases**
+3. **Use quotes for multi-word phrases**
    - Bad: `product manager`
    - Good: `"product manager"`
-
-5. **NOT requires AND before it**
-   - Bad: `developer NOT junior`
-   - Good: `developer AND NOT junior`
-
-6. **Exclude incompatible roles for IC searches**
-   - Bad: `"ai engineer"` (includes founders/CTOs)
-   - Good: `"ai engineer" NOT founder NOT ceo`
 
 ## Query Examples by Role
 
 **Engineers:**
 ```
-("senior software engineer" OR "staff engineer") AND ("distributed systems" OR microservices)
+"senior software engineer" OR "staff engineer" AND "distributed systems" OR microservices
 ```
 
 **Data Professionals:**
 ```
-("data analyst" OR "data scientist") AND sql AND python
+"data analyst" OR "data scientist" AND sql AND python
 ```
 
-**AI/ML Engineers (ICs only):**
+**AI/ML Engineers:**
 ```
-("ai engineer" OR "ml engineer") AND (pytorch OR tensorflow) NOT founder
+"ai engineer" OR "ml engineer" AND pytorch OR tensorflow
 ```
 
 **AI/ML Founders:**
 ```
-("founder" OR "co-founder") AND ("ai" OR "data science") AND japan
+"founder" OR "co-founder" AND "ai" OR "data science" AND japan
 ```
 
 ## Best Practices
 
 1. **Use short forms**: "ai", "ml" not "artificial intelligence", "machine learning"
-2. **Keep compact**: 2-4 OR terms per group maximum
+2. **Keep compact**: 2-4 OR terms per query maximum
 3. **Start simple**: Core role + 1-2 skills, then add complexity
 4. **Use quotes**: For exact phrases like `"product manager"`
-5. **Group with parentheses**: Any query with multiple operators
-6. **Operator precedence**: Parentheses > NOT > AND > OR
+5. **Operator precedence**: AND > OR
 
 ## Operator Usage
 
 - **AND**: Required terms (skills, experience)
 - **OR**: Alternatives (role variations, equivalent skills)
-- **NOT**: Exclude unwanted (junior, intern, founder for IC searches)
 - **Quotes**: Exact phrases (job titles, certifications)
-- **Parentheses**: Group related terms
