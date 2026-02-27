@@ -118,3 +118,10 @@ Example:
 - Wrong audience: verify filter usage (`based in` uses location filter; `associated with` is often a keyword)
 - Browser failures: verify LinkedIn session is logged in and MCP server is connected
 - Missing contact fields: return empty values instead of guessing
+
+## Responsible Use
+
+**This project is for educational and knowledge purposes only.**
+**Do not use it to violate LinkedIn terms, platform guidelines, privacy laws, or any applicable regulations.**
+**Exploiting or misusing this project can lead to account restrictions or bans.**
+**Each individual user is fully responsible for their actions, not this project or any contributor to it.**
